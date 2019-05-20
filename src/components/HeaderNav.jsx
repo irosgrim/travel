@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import shoppingCart from '../imgs/icons/shopping-cart.svg';
 import logo from '../imgs/logo.png';
+import DesktopNav from './DesktopNav';
+import MobileNav from './MobileNav';
+import hamburgerActiveIcon from '../imgs/icons/hamburger-icon-active.svg';
+import hamburgerInactiveIcon from '../imgs/icons/hamburger-icon-inactive.svg';
 
 function HeaderNav(props) {
     const [navBarScrolling, setNavBarScrolling] = useState(false);
+    const [showMobileMenu, setShowMobileMenu] = useState(false);
 
     useEffect(() => {
         window.onscroll = () => {
@@ -12,44 +16,37 @@ function HeaderNav(props) {
                 : setNavBarScrolling(false);
         };
     });
-
-    console.log(navBarScrolling);
+    console.log(showMobileMenu);
     return (
-        <section
-            className={
-                navBarScrolling
-                    ? 'nav-section scrolling'
-                    : 'nav-section not-scrolling'
-            }>
-            <figure className="logo-container">
-                <img
-                    src={logo}
-                    alt="Sembo"
-                    className={navBarScrolling ? 'logo-small' : 'logo-big'}
-                />
-            </figure>
-            <div className="nav-container">
-                <nav className="main-menu">
-                    <ul>
-                        <li>Våra resmål</li>
-                        <li>Så reser du</li>
-                        <li>Erbjudanden</li>
-                        <li>Om oss</li>
-                        <li>Blogg</li>
-                    </ul>
-                </nav>
-                <div className="cart-user">
-                    <ul>
-                        <li>
-                            <p className="shopping-cart">1 produkt</p>
-
-                            <img src={shoppingCart} alt="" />
-                        </li>
-                        <li>Mitt Konto</li>
-                    </ul>
+        <React.Fragment>
+            <section
+                className={
+                    navBarScrolling
+                        ? 'nav-section scrolling'
+                        : 'nav-section not-scrolling'
+                }>
+                <figure className="logo-container">
+                    <img
+                        src={logo}
+                        alt="Sembo"
+                        className={navBarScrolling ? 'logo-small' : 'logo-big'}
+                    />
+                </figure>
+                <DesktopNav />
+                <div
+                    className="hamburger-button"
+                    onClick={() => {
+                        setShowMobileMenu(!showMobileMenu);
+                    }}>
+                    {showMobileMenu ? (
+                        <img src={hamburgerInactiveIcon} alt="" />
+                    ) : (
+                        <img src={hamburgerActiveIcon} alt="" />
+                    )}
                 </div>
-            </div>
-        </section>
+            </section>
+            <MobileNav scrolling={navBarScrolling} visible={showMobileMenu} />
+        </React.Fragment>
     );
 }
 export default HeaderNav;

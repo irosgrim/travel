@@ -10,7 +10,7 @@
     --search-form-bg-color: #ffffff;
     --social-bg-color: #3377b6;
     --lots-of-links-bg-color: #004e6d;
-    --links-column-line: #23639f;
+    --separator-line: #23639f;
 }
 
 * {
@@ -30,6 +30,14 @@ body {
 strong {
     font-weight: 600;
 }
+
+.mobile-nav-container {
+    display: none;
+}
+.hamburger-button {
+    display: none;
+}
+
 .scrolling {
     height: 40px;
     background-color: rgba(0, 0, 0, 0.8);
@@ -44,7 +52,8 @@ strong {
     position: fixed;
     z-index: 42;
     display: flex;
-    overflow-x: hidden;
+
+    overflow: hidden;
     justify-content: space-between;
     width: 100%;
     color: var(--light-text-color);
@@ -493,6 +502,53 @@ main {
     body {
         overflow-x: hidden;
     }
+
+    .nav-container {
+        display: none;
+    }
+    .mobile-nav-container {
+        display: block;
+        position: relative;
+        transition: 0.5s;
+    }
+    .hamburger-button {
+        display: block;
+        cursor: pointer;
+        margin: 15px;
+    }
+    .hamburger-button img {
+        max-height: 22px;
+        width: auto;
+    }
+
+    .mobile-main-menu {
+        position: fixed;
+        z-index: 99;
+        right: 0;
+        background-color: var(--social-bg-color);
+
+        color: var(--light-text-color);
+        font-weight: 600;
+        width: 100%;
+        border-bottom: 10px solid var(--accent-color);
+    }
+    .visible {
+        display: block;
+    }
+    .hidden {
+        display: none;
+    }
+    .mobile-main-menu ul {
+        list-style-type: none;
+    }
+    .mobile-main-menu li {
+        height: 60px;
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+    .mobile-main-menu li:not(:last-child) {
+        border-bottom: 1px solid var(--separator-line);
+    }
     .description-card {
         position: relative;
         z-index: 41;
@@ -510,15 +566,12 @@ main {
         position: fixed;
         z-index: 42;
         display: flex;
-        overflow-x: hidden;
+
         justify-content: space-between;
+        align-items: center;
         width: 100%;
         color: var(--light-text-color);
         transition: 0.5s;
-    }
-
-    .nav-container {
-        display: none;
     }
 
     /*---main menu ---*/
@@ -553,6 +606,7 @@ main {
         width: 100%;
 
         -webkit-overflow-scrolling: touch;
+        overflow: scroll;
     }
 
     .header-form nav li {
