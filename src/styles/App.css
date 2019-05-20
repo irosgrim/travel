@@ -1,6 +1,7 @@
 :root {
     font-size: 16px;
-    --accent-color: #EC008C;
+
+    --accent-color: #ec008c;
     --body-text-color: #434343;
     --body-bg-color: #ffffff;
     --footer-bg-color: #01354a;
@@ -9,6 +10,7 @@
     --search-form-bg-color: #ffffff;
     --social-bg-color: #3377b6;
     --lots-of-links-bg-color: #004e6d;
+    --links-column-line: #23639f;
 }
 
 * {
@@ -21,22 +23,32 @@
 }
 
 body {
+    overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
 }
 
 strong {
     font-weight: 600;
 }
-
+.scrolling {
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: 0.5s;
+}
+.not-scrolling {
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: 0.5s;
+}
 .nav-section {
     position: fixed;
     z-index: 42;
     display: flex;
+    overflow-x: hidden;
     justify-content: space-between;
-    height: 80px;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
     color: var(--light-text-color);
+    transition: 0.5s;
 }
 
 .nav-container {
@@ -65,10 +77,19 @@ strong {
 .nav-container li {
     padding: 0 6px;
 }
-
-.logo {
+.logo-big {
     height: 80px;
     width: 80px;
+    transition: 0.5s;
+}
+.logo-small {
+    height: 40px;
+    width: 40px;
+    transition: 0.5s;
+}
+.logo-footer {
+    height: 80px;
+    width: auto;
 }
 
 .shopping-cart {
@@ -146,7 +167,7 @@ strong {
 }
 
 .inactive-form-section {
-    background-color: #3377B6;
+    background-color: #3377b6;
     border-left: 1px solid #ffffff;
     color: var(--light-text-color);
 }
@@ -173,7 +194,7 @@ strong {
     height: 46px;
     width: 100%;
     border-radius: 3px;
-    border: 1px solid #C4C4C4;
+    border: 1px solid #c4c4c4;
     padding: 0 5px;
 }
 
@@ -188,17 +209,17 @@ strong {
     width: 100%;
 }
 
-.date-column>div {
+.date-column > div {
     width: 100%;
 }
 
-.date-column>div:first-child {
+.date-column > div:first-child {
     margin-right: 5px;
     margin-left: 10px;
     width: 100%;
 }
 
-.date-column>div:last-child {
+.date-column > div:last-child {
     margin-left: 5px;
     margin-right: 10px;
     width: 100%;
@@ -218,24 +239,24 @@ strong {
 /* ---form section--- */
 
 .featured-header-destination {
+    position: relative;
     padding-top: 120px;
     padding-bottom: 6px;
-    background-image: url('../imgs/pictures/istanbul.jpeg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center -200px;
-    background-repeat: no-repeat;
     border-bottom: 10px solid var(--accent-color);
+    overflow-y: hidden;
 }
 
-.bg-image {
-    background-image: url('../imgs/pictures/istanbul.jpeg');
-    background-position: center;
-    background-size: cover;
-    height: 700px;
+.bg {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    overflow-x: hidden;
+}
+
+.bg img {
+    min-width: 1100px;
     width: 100%;
-    border-bottom: 10px solid var(--accent-color);
-    overflow: hidden;
+    height: auto;
 }
 
 main {
@@ -252,6 +273,10 @@ main {
 
 .featured-section header h2 {
     margin-bottom: 20px;
+    font-size: 2.25rem;
+}
+.featured-section header p {
+    font-size: 1.125rem;
 }
 
 .featured-destinations {
@@ -262,10 +287,15 @@ main {
 }
 
 .destination-card {
+    position: relative;
     flex: 1;
     min-width: 400px;
     width: 600px;
-    margin: 0 10px;
+    margin: 10px;
+}
+
+.destination-card p {
+    font-size: 1.125rem;
 }
 
 .destination-card img {
@@ -275,11 +305,13 @@ main {
 }
 
 .destination-card-overlay {
-    position: relative;
+    position: absolute;
+    width: 100%;
     z-index: 2;
-    top: -75px;
+    bottom: 0;
     background-color: rgba(0, 0, 0, 0.6);
     padding: 5px;
+    margin-bottom: 5px;
     color: var(--light-text-color);
     border-radius: 0 0 5px 5px;
 }
@@ -294,7 +326,7 @@ main {
 }
 
 .subscribe-form-container {
-    width: 550px;
+    max-width: 550px;
     margin: 0 auto;
     text-align: center;
 }
@@ -307,6 +339,8 @@ main {
 .subscribe-form-container form {
     display: flex;
     justify-content: space-between;
+    max-width: 600px;
+    flex-wrap: wrap;
 }
 
 .subscribe-section form input {
@@ -331,7 +365,7 @@ main {
 
 .social-section {
     width: 100%;
-    background-color: #3377B6;
+    background-color: #3377b6;
     color: var(--light-text-color);
     padding: 20px 5%;
     margin: 0 auto;
@@ -340,7 +374,30 @@ main {
 .social-section ul {
     list-style-type: none;
 }
+.social-section .client-info {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.client-info .column {
+    margin: 20px;
+    padding: 20px;
+}
 
+.client-info h3 {
+    margin-bottom: 20px;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+.client-info .column figure {
+    width: 100%;
+    margin: 0 auto 20px auto;
+}
+.client-info .column img {
+    margin-left: 20%;
+    width: 80px;
+    height: auto;
+}
 .main-text-section {
     padding: 40px 5%;
 }
@@ -350,7 +407,32 @@ main {
     background-color: var(--lots-of-links-bg-color);
     color: var(--light-text-color);
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.two-columns {
+    display: flex;
+}
+.lots-of-links-section h3 {
+    margin-bottom: 20px;
+}
+.lots-of-links-section ul {
+    list-style-type: none;
+
+    margin-bottom: 20px;
+}
+.lots-of-links-section li {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+}
+
+.two-columns ul:last-child {
+    margin-left: 28px;
+}
+
+.link-column:not(:first-child) {
+    padding-left: 30px;
 }
 
 .main-footer {
@@ -363,17 +445,21 @@ main {
 
 .footer-logos {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .bank-logos {
     flex: 1;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
 }
 
 .bank-logos img {
-    height: 24px;
+    height: 14px;
+    max-height: 24px;
     width: auto;
 }
 
@@ -397,4 +483,195 @@ main {
 .footer-copyright {
     text-align: center;
     margin-top: 20px;
+}
+
+@media (min-width: 360px) and (max-width: 909px) {
+    /* main menu*/
+    html,
+    body {
+        overflow-x: hidden;
+    }
+    .description-card {
+        position: relative;
+        z-index: 41;
+        left: 1%;
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        color: var(--light-text-color);
+        padding: 20px;
+        margin-bottom: 100px;
+        border-radius: 0;
+    }
+    .nav-section {
+        position: fixed;
+        z-index: 42;
+        display: flex;
+        overflow-x: hidden;
+        justify-content: space-between;
+        width: 100%;
+        color: var(--light-text-color);
+        transition: 0.5s;
+    }
+
+    .nav-container {
+        display: none;
+    }
+
+    /*---main menu ---*/
+    /* form menu */
+
+    .header-form {
+        position: relative;
+        z-index: 41;
+        background-color: #ffffff;
+        max-width: 100%;
+        min-width: 100%;
+        margin: 140px auto 20px auto;
+        border-radius: 0;
+    }
+
+    .header-form nav {
+        width: 100%;
+        border-radius: 0;
+        overflow-x: scroll;
+    }
+
+    .header-form ul {
+        display: flex;
+        list-style-type: none;
+    }
+
+    .header-form li {
+        padding: 0 10px;
+    }
+
+    .header-form nav ul {
+        width: 100%;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .header-form nav li {
+        flex: 1;
+        font-size: 1rem;
+        padding-top: 6px;
+        text-align: center;
+        min-width: 146px;
+    }
+
+    .header-form nav li:first-child {
+        border-radius: 0;
+    }
+
+    .header-form nav li:last-child {
+        border-radius: 0;
+    }
+
+    .form-section-button {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        height: 36px;
+    }
+
+    .active-form-section {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    .inactive-form-section {
+        background-color: #3377b6;
+        border-left: 1px solid #ffffff;
+        color: var(--light-text-color);
+    }
+
+    /*---form menu ---*/
+
+    /* form-section */
+    .form-frame {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .form-frame form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-frame form label {
+        display: inline-block;
+    }
+
+    .form-frame form input {
+        display: block;
+        height: 46px;
+        width: 100%;
+        border-radius: 3px;
+        border: 1px solid #c4c4c4;
+        padding: 0 5px;
+    }
+
+    .big-input-column {
+        width: 100%;
+    }
+
+    .date-column {
+        display: flex;
+
+        width: 100%;
+    }
+
+    .date-column > div {
+        width: 100%;
+    }
+
+    .date-column > div:first-child {
+        margin-right: 10px;
+        margin-left: 0px;
+        width: 100%;
+    }
+
+    .date-column > div:last-child {
+        margin-left: 10px;
+        margin-right: 0px;
+        width: 100%;
+    }
+
+    .big-button {
+        padding: 0 20px;
+        margin: 20px 10px;
+        height: 46px;
+        width: 260px;
+        border-radius: 3px;
+        border: none;
+        background-color: var(--social-bg-color);
+        color: var(--light-text-color);
+    }
+
+    /* --- form-section ---*/
+    .bg {
+        width: 100%;
+        overflow: hidden;
+    }
+    .bg img {
+        width: 360px;
+        height: auto;
+    }
+    .featured-section {
+        width: 98%;
+        margin: 0 auto;
+    }
+    .destination-card {
+        flex: 1;
+        min-width: 100%;
+        width: 100%;
+        margin: 0;
+    }
+    .destination-card img {
+        width: 100%;
+        height: auto;
+    }
 }

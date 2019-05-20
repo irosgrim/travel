@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './imgs/logo.png';
+import logoWhite from './imgs/logo_white.png';
 import dubai from './imgs/pictures/dubai.jpg';
 import shoppingCart from './imgs/icons/shopping-cart.svg';
 import searchIcon from './imgs/icons/search-icon.svg';
 import './styles/App.css';
+
+import shield from './imgs/icons/shield.png';
+import contactUs from './imgs/icons/contact.png';
+import customerService from './imgs/icons/customer-service.png';
 
 import visa from './imgs/icons/visa.png';
 import seb from './imgs/icons/seb.png';
@@ -14,13 +19,153 @@ import eurocard from './imgs/icons/eurocard.png';
 import captum from './imgs/icons/captum_liten.png';
 import swedbank from './imgs/icons/swedbank.png';
 
+import istanbul from './imgs/pictures/istanbul.jpeg';
+
 function App() {
+    const [navBarScrolling, setNavBarScrolling] = useState(false);
+
+    const lotsOfLinks = [
+        {
+            title: 'Resmål',
+            list: [
+                'Belgien',
+                'Cypern',
+                'Danmark',
+                'Estland',
+                'Frankrike',
+                'Frankrike Alpin',
+                'Grekland',
+                'Holland',
+                'Irland',
+                'Italien',
+                'Italien-Alpin',
+                'Kanarieöarna',
+                'Kroatien',
+                'Lettland',
+                'Malta',
+                'Norge',
+                'Norge Alpin',
+                'Polen',
+                'Polen Alpin',
+                'Portugal',
+                'Schweiz',
+                'Schweiz Alpin',
+                'Slovenien',
+                'Spanien',
+                'Storbritannien',
+                'Sverige',
+                'Sverige Alpin',
+                'Tjeckien',
+                'Turkiet',
+                'Tyskland',
+                'Ungern',
+                'Österrike',
+                'Österrike Alpin',
+                'Dubai',
+                'Mexiko',
+                'Thailand',
+                'USA'
+            ]
+        },
+        {
+            title: 'Billiga flyg',
+            list: [
+                'Sista-minuten',
+                'Las-Palmas',
+                'Dubrovnik',
+                'Dubai',
+                'Lissabon',
+                'Antalya',
+                'Bangkok',
+                'Paris',
+                'Nice',
+                'Reykjavik',
+                'Prag',
+                'Split',
+                'London',
+                'Venedig',
+                'Palma de Mallorca',
+                'Berlin',
+                'Madrid',
+                'Alicante',
+                'Rom',
+                'Barcelona',
+                'Mallorca',
+                'Malaga',
+                'Kreta',
+                'Faro'
+            ]
+        },
+        {
+            title: 'Weekend',
+            list: ['Paris', 'Rom', 'Prag', 'Barcelona', 'London']
+        },
+        {
+            title: 'Sol och bad',
+            list: [
+                'Fuengirola',
+                'Cannes',
+                'Playa del Ingles',
+                'Antibes Juan-les-Pins',
+                ' Nice'
+            ]
+        },
+        {
+            title: 'Skidresor',
+            list: ['Skidresor', 'Österrike', 'Italien', 'Frankrike', 'Schweiz']
+        },
+        {
+            title: 'Boenden',
+            list: ['Hotell', 'Lägenhet', 'Semesterhus']
+        },
+        {
+            title: 'Barnsemester',
+            list: [
+                'Disneyland Paris',
+                'Lalandia',
+                'Legoland',
+                'Weissenhäuser Strand',
+                'Tropical Island',
+                'The Reef'
+            ]
+        },
+        {
+            title: 'Bilsemester',
+            list: ['Bilsemester i Europa']
+        }
+    ];
+
+    const destinationsColumn2 = lotsOfLinks[0].list.splice(
+        Math.round(lotsOfLinks[0].list.length / 2),
+        lotsOfLinks[0].list.length
+    );
+
+    useEffect(() => {
+        window.onscroll = () => {
+            window.pageYOffset > 80
+                ? setNavBarScrolling(true)
+                : setNavBarScrolling(false);
+        };
+    });
+
+    console.log(navBarScrolling);
     return (
         <div className="App">
             <header className="main-header">
-                <section className="nav-section">
-                    <figure>
-                        <img src={logo} alt="Sembo" className="logo" />
+                <section
+                    className={
+                        navBarScrolling
+                            ? 'nav-section scrolling'
+                            : 'nav-section not-scrolling'
+                    }>
+                    <figure className="logo-container">
+                        <img
+                            src={logo}
+                            alt="Sembo"
+                            className={
+                                navBarScrolling ? 'logo-small' : 'logo-big'
+                            }
+                        />
                     </figure>
                     <div className="nav-container">
                         <nav className="main-menu">
@@ -121,6 +266,9 @@ function App() {
                             </form>
                         </section>
                     </section>
+                    <div className="bg">
+                        <img src={istanbul} alt="" />
+                    </div>
                 </section>
             </header>
             <main>
@@ -221,16 +369,53 @@ function App() {
                 <section className="social-section">
                     <div className="client-info">
                         <section className="column">
+                            <figure>
+                                <img src={shield} alt="Varför Sembo?" />
+                            </figure>
                             <header>
                                 <h3>Varför Sembo?</h3>
-                                <ul>
-                                    <li>Prisgaranti</li>
-                                    <li>97% nöjda kunder</li>
-                                    <li>Kundservice alla dagar</li>
-                                    <li>Säker betalning via</li>
-                                    <li>DIBS och Captum</li>
-                                </ul>
                             </header>
+                            <ul>
+                                <li>Prisgaranti</li>
+                                <li>
+                                    <strong>97%</strong> nöjda kunder
+                                </li>
+                                <li>
+                                    Kundservice <strong>alla dagar</strong>
+                                </li>
+                                <li>
+                                    <strong>Säker betalning</strong> via
+                                </li>
+                                <li>
+                                    <strong>DIBS</strong> och{' '}
+                                    <strong>Captum</strong>
+                                </li>
+                            </ul>
+                        </section>
+                        <section className="column">
+                            <figure>
+                                <img src={contactUs} alt="Kontakta oss" />
+                            </figure>
+                            <header>
+                                <h3>Kontakta oss</h3>
+                            </header>
+                            <ul>
+                                <li>Tel. 042-378500</li>
+                                <li>Helgfri mån-fre 09-18</li>
+                                <li>Lör-sön, helgdag 10-14</li>
+                            </ul>
+                        </section>
+                        <section className="column">
+                            <figure>
+                                <img src={customerService} alt="Kundservice" />
+                            </figure>
+                            <header>
+                                <h3>Kundservice</h3>
+                            </header>
+                            <ul>
+                                <li>Få svar på dina frågor.</li>
+                                <li>Kundservicer</li>
+                            </ul>
                         </section>
                     </div>
                     <div className="social-icons">
@@ -317,34 +502,100 @@ function App() {
 
                 <section className="lots-of-links-section">
                     <section className="link-column">
-                        <h3>Resmal</h3>
+                        <h3>{lotsOfLinks[0].title}</h3>
+                        <div className="two-columns">
+                            <ul>
+                                {lotsOfLinks[0].list.map((country, index) => {
+                                    return <li key={index}>{country}</li>;
+                                })}
+                            </ul>
+                            <ul>
+                                {destinationsColumn2.map((country, index) => {
+                                    return <li key={index}>{country}</li>;
+                                })}
+                            </ul>
+                        </div>
+                    </section>
+                    <section className="link-column">
+                        <h3>{lotsOfLinks[1].title}</h3>
                         <ul>
-                            <li>some text</li>
+                            {lotsOfLinks[1].list.map((country, index) => {
+                                return <li key={index}>{country}</li>;
+                            })}
                         </ul>
                     </section>
                     <section className="link-column">
-                        <h3>Resmal</h3>
+                        <h3>{lotsOfLinks[2].title}</h3>
                         <ul>
-                            <li>some text</li>
+                            {lotsOfLinks[2].list.map((country, index) => {
+                                return <li key={index}>{country}</li>;
+                            })}
+                        </ul>
+
+                        <h3>{lotsOfLinks[3].title}</h3>
+                        <ul>
+                            {lotsOfLinks[3].list.map((country, index) => {
+                                return <li key={index}>{country}</li>;
+                            })}
+                        </ul>
+
+                        <h3>{lotsOfLinks[4].title}</h3>
+                        <ul>
+                            {lotsOfLinks[4].list.map((country, index) => {
+                                return <li key={index}>{country}</li>;
+                            })}
                         </ul>
                     </section>
                     <section className="link-column">
-                        <h3>Resmal</h3>
+                        <h3>{lotsOfLinks[5].title}</h3>
                         <ul>
-                            <li>some text</li>
+                            {lotsOfLinks[5].list.map((country, index) => {
+                                return <li key={index}>{country}</li>;
+                            })}
+                        </ul>
+
+                        <h3>{lotsOfLinks[6].title}</h3>
+                        <ul>
+                            {lotsOfLinks[6].list.map((country, index) => {
+                                return <li key={index}>{country}</li>;
+                            })}
+                        </ul>
+
+                        <h3>{lotsOfLinks[7].title}</h3>
+                        <ul>
+                            {lotsOfLinks[7].list.map((country, index) => {
+                                return <li key={index}>{country}</li>;
+                            })}
                         </ul>
                     </section>
                     <section className="link-column">
-                        <h3>Resmal</h3>
+                        <h3>Kundservice</h3>
                         <ul>
-                            <li>some text</li>
+                            <li>Frågor och svar</li>
+                            <li>Ring 042-378500</li>
+                        </ul>
+                        <h3>Inför resan</h3>
+                        <ul>
+                            <li>Därför ska du boka med Sembo</li>
+                            <li>Våra villkor</li>
+                            <li>Våra priser</li>
+                            <li>Försäkringar</li>
+                        </ul>
+
+                        <h3>Delbetala resan</h3>
+                        <ul>
+                            <li>Delbetala din semester med Captum</li>
+                        </ul>
+                        <h3>Work at Sembo</h3>
+                        <ul>
+                            <li>Work at Sembo</li>
                         </ul>
                     </section>
                 </section>
             </main>
             <footer className="main-footer">
                 <section className="footer-logos">
-                    <img src={logo} alt="Sembo" className="logo" />
+                    <img src={logoWhite} alt="Sembo" className="logo-footer" />
                     <span className="bank-logos">
                         <img src={visa} alt="" />
                         <img src={mastercard} alt="" />
