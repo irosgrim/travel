@@ -54,6 +54,7 @@ strong {
 .nav-container {
     display: flex;
     width: 100%;
+    margin-right: 20px;
     align-items: center;
     font-size: 1rem;
 }
@@ -102,6 +103,7 @@ strong {
     position: relative;
     z-index: 41;
     left: 10%;
+
     max-width: 520px;
     min-width: 300px;
     background-color: rgba(0, 0, 0, 0.3);
@@ -495,14 +497,14 @@ main {
         position: relative;
         z-index: 41;
         left: 1%;
-        width: 100%;
-        max-width: 100%;
-        min-width: 100%;
+
+        max-width: 95%;
+        min-width: 95%;
         background-color: rgba(0, 0, 0, 0.3);
         color: var(--light-text-color);
         padding: 20px;
         margin-bottom: 100px;
-        border-radius: 0;
+        border-radius: 5px;
     }
     .nav-section {
         position: fixed;
