@@ -19,15 +19,33 @@ function MobileNav(props) {
                                 <img src={shoppingCart} alt="" />
                             </div>
                             <div className="mobile-user-account">
-                                Mitt Konto
+                                <a href="https://www.sembo.se/min-sida">
+                                    Min Sida
+                                </a>
                             </div>
                         </div>
                     </li>
-                    <li>Våra resmål</li>
-                    <li>Så reser du</li>
-                    <li>Erbjudanden</li>
-                    <li>Om oss</li>
-                    <li>Blogg</li>
+                    <li>
+                        <a href="https://www.sembo.se/vaara-resmaal/vaara-resmaal-startsida">
+                            Våra resmål
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.sembo.se/saa-reser-du">
+                            Så reser du
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.sembo.se/erbjudande">
+                            Erbjudanden
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.sembo.se/om-oss.aspx">Om oss</a>
+                    </li>
+                    <li>
+                        <a href="http://blogg.sembo.se/">Blogg</a>
+                    </li>
                 </ul>
             </nav>
         </div>

@@ -79,6 +79,11 @@ strong {
     display: flex;
     justify-content: flex-end;
 }
+.main-menu a:hover {
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 5px;
+    transition: 0.3s;
+}
 
 .cart-user {
     display: flex;
