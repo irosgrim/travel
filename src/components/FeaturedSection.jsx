@@ -19,7 +19,7 @@ function FeaturedSection() {
     ];
 
     useEffect(() => {
-        axios(`/fakeApi/${hotelsLocation.hotelURL}.json`).then(response => {
+        axios(`fakeApi/${hotelsLocation.hotelURL}.json`).then(response => {
             setFetchedHotels(response.data.Hotels);
         });
     }, [hotelsLocation.hotelURL]);

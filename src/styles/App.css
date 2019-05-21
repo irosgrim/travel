@@ -424,7 +424,9 @@ main {
 }
 
 .popular-hotels-card img {
-    max-width: 240px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    max-width: 100%;
     height: auto;
 }
 
