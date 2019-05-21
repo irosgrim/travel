@@ -16,7 +16,6 @@ function HeaderNav(props) {
                 : setNavBarScrolling(false);
         };
     });
-    console.log(showMobileMenu);
     return (
         <React.Fragment>
             <section

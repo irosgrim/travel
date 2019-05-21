@@ -11,12 +11,11 @@ function FeaturedSection() {
     const hotelsNav = [
         { hotelLocation: 'SVERIGE', hotelURL: 'sverige' },
         { hotelLocation: 'DANMARK', hotelURL: 'danmark' },
-        { hotelLocation: 'SPA & WELLNESS', hotelURL: 'spaochwellness' },
+        { hotelLocation: 'ITALIEN', hotelURL: 'italien' },
         { hotelLocation: 'KROATIEN', hotelURL: 'kroatien' },
-        { hotelLocation: 'LONDON', hotelURL: 'london' },
+        { hotelLocation: 'MALLORCA', hotelURL: 'mallorca' },
         { hotelLocation: 'FRANSKA RIVIERAN', hotelURL: 'franskarivieran' },
-        { hotelLocation: 'SPANIEN', hotelURL: 'spanien' },
-        { hotelLocation: 'BADLAND', hotelURL: 'badland' }
+        { hotelLocation: 'SPANIEN', hotelURL: 'spanien' }
     ];
 
     useEffect(() => {
@@ -24,12 +23,13 @@ function FeaturedSection() {
             setFetchedHotels(response.data.Hotels);
         });
     }, [hotelsLocation.hotelURL]);
+
     function makeStars(n) {
         let stars = [];
         for (let i = 0; i < n; i++) {
             stars.push(i);
         }
-        return stars.map((s, i) => <img src={star} alt="" />);
+        return stars.map((s, i) => <img src={star} alt="" key={i} />);
     }
     return (
         <section className="featured-section">
@@ -144,7 +144,9 @@ function FeaturedSection() {
                     {fetchedHotels.length < 1
                         ? 'Loading hotels'
                         : fetchedHotels.map((hotel, index) => (
-                              <article className="popular-hotels-card">
+                              <article
+                                  className="popular-hotels-card"
+                                  key={index}>
                                   <a href={hotel.Accommodation.Link}>
                                       <figure>
                                           <div className="stars">
