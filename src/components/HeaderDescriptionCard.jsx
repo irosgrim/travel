@@ -1,15 +1,14 @@
 import React from 'react';
 
-function HeaderDescriptionCard() {
+function HeaderDescriptionCard({ locationText, descriptionText, linkUrl }) {
     return (
         <div className="description-card">
-            <header>
-                <h2>Istanbul</h2>
-            </header>
-            <p>
-                Upptäck magiska Istanbul - Just nu kampanjpriser på flyg och
-                hotell!
-            </p>
+            <a href={linkUrl}>
+                <header>
+                    <h2>{locationText}</h2>
+                </header>
+                <p>{descriptionText}</p>
+            </a>
         </div>
     );
 }

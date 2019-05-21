@@ -25,7 +25,10 @@ body {
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
 }
-
+a {
+    color: inherit;
+    text-decoration: none;
+}
 strong {
     font-weight: 600;
 }
@@ -187,7 +190,20 @@ strong {
     border-left: 1px solid #ffffff;
     color: var(--light-text-color);
 }
-
+.mobile-user-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mobile-shopping-cart {
+    display: flex;
+}
+.mobile-shopping-cart img {
+    margin-left: 20px;
+}
+.mobile-user-account {
+    margin: 0 20px;
+}
 /* form section */
 
 .form-frame {
@@ -225,17 +241,17 @@ strong {
     width: 100%;
 }
 
-.date-column>div {
+.date-column > div {
     width: 100%;
 }
 
-.date-column>div:first-child {
+.date-column > div:first-child {
     margin-right: 5px;
     margin-left: 10px;
     width: 100%;
 }
 
-.date-column>div:last-child {
+.date-column > div:last-child {
     margin-left: 5px;
     margin-right: 10px;
     width: 100%;
@@ -318,7 +334,8 @@ main {
 .destination-card img {
     border-radius: 5px;
     width: 100%;
-    height: auto;
+
+    min-height: 400px;
 }
 
 .destination-card-overlay {
@@ -608,7 +625,8 @@ main {
 
 @media (min-width: 360px) and (max-width: 909px) {
     /* main menu*/
-    html, body {
+    html,
+    body {
         overflow-x: hidden;
     }
     .nav-container {
@@ -762,15 +780,15 @@ main {
         display: flex;
         width: 100%;
     }
-    .date-column>div {
+    .date-column > div {
         width: 100%;
     }
-    .date-column>div:first-child {
+    .date-column > div:first-child {
         margin-right: 10px;
         margin-left: 0px;
         width: 100%;
     }
-    .date-column>div:last-child {
+    .date-column > div:last-child {
         margin-left: 10px;
         margin-right: 0px;
         width: 100%;

@@ -1,10 +1,9 @@
 import React from 'react';
-import istanbul from '../imgs/pictures/istanbul.jpeg';
 
-function HeaderFeaturedImage() {
+function HeaderFeaturedImage({ picUrl, location }) {
     return (
         <div className="bg">
-            <img src={istanbul} alt="" />
+            <img src={picUrl} alt={location} />
         </div>
     );
 }

@@ -32,6 +32,7 @@ function HeaderNav(props) {
                     />
                 </figure>
                 <DesktopNav />
+
                 <div
                     className="hamburger-button"
                     onClick={() => {

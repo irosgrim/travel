@@ -8,6 +8,10 @@ function FeaturedSection() {
         hotelURL: 'sverige'
     });
     const [fetchedHotels, setFetchedHotels] = useState([]);
+    const [
+        fetchedFeaturedDestinations,
+        setFetchedFeaturedDestinations
+    ] = useState([]);
     const hotelsNav = [
         { hotelLocation: 'SVERIGE', hotelURL: 'sverige' },
         { hotelLocation: 'DANMARK', hotelURL: 'danmark' },
@@ -22,6 +26,9 @@ function FeaturedSection() {
         axios(`fakeApi/${hotelsLocation.hotelURL}.json`).then(response => {
             setFetchedHotels(response.data.Hotels);
         });
+        axios(`fakeApi/featured.json`).then(response =>
+            setFetchedFeaturedDestinations(response.data.Destinations)
+        );
     }, [hotelsLocation.hotelURL]);
 
     function makeStars(n) {
@@ -42,77 +49,20 @@ function FeaturedSection() {
             </header>
 
             <section className="featured-destinations">
-                <div className="destination-card">
-                    <figure>
-                        <img src={dubai} alt="" />
-                    </figure>
-                    <div className="destination-card-overlay">
-                        <h3>DUBAI</h3>
-                        <p>
-                            Välkommen till Mellanösterns svar på Miami – en
-                            metropol som uppfyller alla drömmar!
-                        </p>
+                {fetchedFeaturedDestinations.map((destination, index) => (
+                    <div className="destination-card" key={index}>
+                        <figure>
+                            <img
+                                src={destination.ImageUrl}
+                                alt={destination.Location}
+                            />
+                        </figure>
+                        <div className="destination-card-overlay">
+                            <h3>{destination.Location}</h3>
+                            <p>{destination.Description}</p>
+                        </div>
                     </div>
-                </div>
-
-                <div className="destination-card">
-                    <img src={dubai} alt="" />
-
-                    <div className="destination-card-overlay">
-                        <h3>DUBAI</h3>
-                        <p>
-                            Välkommen till Mellanösterns svar på Miami – en
-                            metropol som uppfyller alla drömmar!
-                        </p>
-                    </div>
-                </div>
-
-                <div className="destination-card">
-                    <img src={dubai} alt="" />
-
-                    <div className="destination-card-overlay">
-                        <h3>DUBAI</h3>
-                        <p>
-                            Välkommen till Mellanösterns svar på Miami – en
-                            metropol som uppfyller alla drömmar!
-                        </p>
-                    </div>
-                </div>
-
-                <div className="destination-card">
-                    <img src={dubai} alt="" />
-
-                    <div className="destination-card-overlay">
-                        <h3>DUBAI</h3>
-                        <p>
-                            Välkommen till Mellanösterns svar på Miami – en
-                            metropol som uppfyller alla drömmar!
-                        </p>
-                    </div>
-                </div>
-
-                <div className="destination-card">
-                    <img src={dubai} alt="" />
-
-                    <div className="destination-card-overlay">
-                        <h3>DUBAI</h3>
-                        <p>
-                            Välkommen till Mellanösterns svar på Miami – en
-                            metropol som uppfyller alla drömmar!
-                        </p>
-                    </div>
-                </div>
-                <div className="destination-card">
-                    <img src={dubai} alt="" />
-
-                    <div className="destination-card-overlay">
-                        <h3>DUBAI</h3>
-                        <p>
-                            Välkommen till Mellanösterns svar på Miami – en
-                            metropol som uppfyller alla drömmar!
-                        </p>
-                    </div>
-                </div>
+                ))}
             </section>
             <section className="popular-hotels">
                 <header>
