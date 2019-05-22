@@ -169,10 +169,12 @@ strong {
     padding-top: 6px;
     text-align: center;
     min-width: 146px;
+    cursor: pointer;
 }
 
 .header-form nav li:first-child {
     border-radius: 5px 0 0 0;
+    border-left: none;
 }
 
 .header-form nav li:last-child {
@@ -187,13 +189,16 @@ strong {
 
 .active-form-section {
     background-color: #ffffff;
+    border: none;
     color: #000000;
+    transition: 0.5s;
 }
 
 .inactive-form-section {
     background-color: #3377b6;
     border-left: 1px solid #ffffff;
     color: var(--light-text-color);
+    transition: 0.5s;
 }
 .mobile-user-menu {
     display: flex;
@@ -234,7 +239,53 @@ strong {
     border: 1px solid #c4c4c4;
     padding: 0 5px;
 }
+.form-frame form select {
+    height: 46px;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #c4c4c4;
+}
+.land-select {
+    margin-right: 5px;
+}
+.region-select {
+    margin-left: 5px;
+}
+.flights-form {
+    display: flex;
+    flex-direction: column;
+}
+.flight-inputs-container {
+    display: flex;
+    width: 100%;
+}
 
+.flight-checkboxes {
+    display: flex;
+    justify-content: center;
+}
+.flight-checkboxes > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+.flight-checkboxes > div > input {
+    max-width: 20px;
+}
+.flight-checkboxes > div > span {
+    width: 100%;
+}
+.flight-input {
+    margin-right: 5px;
+}
+.flight-input-to {
+    margin-left: 5px;
+}
+.flight-checkboxes {
+    display: flex;
+    width: 100%;
+}
 .big-input-column {
     min-width: 150px;
     width: 100%;
@@ -722,6 +773,7 @@ main {
     }
     .header-form li {
         padding: 0 10px;
+        cursor: pointer;
     }
     .header-form nav ul {
         width: 100%;
@@ -737,6 +789,7 @@ main {
     }
     .header-form nav li:first-child {
         border-radius: 0;
+        border-left: none;
     }
     .header-form nav li:last-child {
         border-radius: 0;
@@ -749,11 +802,13 @@ main {
     .active-form-section {
         background-color: #ffffff;
         color: #000000;
+        transition: 0.5s;
     }
     .inactive-form-section {
         background-color: #3377b6;
         border-left: 1px solid #ffffff;
         color: var(--light-text-color);
+        transition: 0.5s;
     }
     /*---form menu ---*/
     /* form-section */

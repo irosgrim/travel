@@ -1,73 +1,94 @@
-import React from 'react';
-import searchIcon from '../imgs/icons/search-icon.svg';
+import React, { useState } from 'react';
+import SearchForms from './SearchForms';
 
 function HeaderForm() {
+    const [selectedForm, setSelectedForm] = useState('Hotel');
+
     return (
         <section className="header-form">
             <nav>
                 <ul>
-                    <li className="form-section-button active-form-section">
+                    <li
+                        className={
+                            selectedForm === 'Hotel'
+                                ? 'form-section-button active-form-section'
+                                : 'form-section-button inactive-form-section'
+                        }
+                        onClick={() => {
+                            return selectedForm !== 'Hotel'
+                                ? setSelectedForm('Hotel')
+                                : null;
+                        }}>
                         Hotell - Lägenhet
                     </li>
-                    <li className="form-section-button inactive-form-section">
+                    <li
+                        className={
+                            selectedForm === 'Semesterhus'
+                                ? 'form-section-button active-form-section'
+                                : 'form-section-button inactive-form-section'
+                        }
+                        onClick={() => {
+                            return selectedForm !== 'Semesterhus'
+                                ? setSelectedForm('Semesterhus')
+                                : null;
+                        }}>
                         Semesterhus
                     </li>
-                    <li className="form-section-button inactive-form-section">
+                    <li
+                        className={
+                            selectedForm === 'Flyg'
+                                ? 'form-section-button active-form-section'
+                                : 'form-section-button inactive-form-section'
+                        }
+                        onClick={() => {
+                            return selectedForm !== 'Flyg'
+                                ? setSelectedForm('Flyg')
+                                : null;
+                        }}>
                         Flyg
                     </li>
-                    <li className="form-section-button inactive-form-section">
+                    <li
+                        className={
+                            selectedForm === 'FlygOchBoende'
+                                ? 'form-section-button active-form-section'
+                                : 'form-section-button inactive-form-section'
+                        }
+                        onClick={() => {
+                            return selectedForm !== 'FlygOchBoende'
+                                ? setSelectedForm('FlygOchBoende')
+                                : null;
+                        }}>
                         Flyg och boende
                     </li>
-                    <li className="form-section-button inactive-form-section">
+                    <li
+                        className={
+                            selectedForm === 'FeriaOchBoende'
+                                ? 'form-section-button active-form-section'
+                                : 'form-section-button inactive-form-section'
+                        }
+                        onClick={() => {
+                            return selectedForm !== 'FeriaOchBoende'
+                                ? setSelectedForm('FeriaOchBoende')
+                                : null;
+                        }}>
                         Färja och boende
                     </li>
-                    <li className="form-section-button inactive-form-section">
+                    <li
+                        className={
+                            selectedForm === 'FeriaOchBro'
+                                ? 'form-section-button active-form-section'
+                                : 'form-section-button inactive-form-section'
+                        }
+                        onClick={() => {
+                            return selectedForm !== 'FeriaOchBro'
+                                ? setSelectedForm('FeriaOchBro')
+                                : null;
+                        }}>
                         Färja - Bro
                     </li>
                 </ul>
             </nav>
-            <section className="form-frame">
-                <form>
-                    <div className="big-input-column">
-                        <label htmlFor="destination">Resmål</label>
-                        <input
-                            type="text"
-                            placeholder="Vart vill du resa?"
-                            className="destination-input"
-                        />
-                    </div>
-                    <div className="date-column">
-                        <div>
-                            <label htmlFor="from">Från</label>
-                            <input
-                                type="text"
-                                placeholder="ååå-mm-dd"
-                                className="date-input"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="to">Till</label>
-                            <input
-                                type="text"
-                                placeholder="ååå-mm-dd"
-                                className="date-input"
-                            />
-                        </div>
-                    </div>
-                    <div className="big-input-column">
-                        <label htmlFor="travelers">Resenärer</label>
-                        <input
-                            type="text"
-                            placeholder="2 vuxna, 1 rum"
-                            className="travelers-input"
-                        />
-                    </div>
-
-                    <button className="big-button">
-                        <img src={searchIcon} alt="" />
-                    </button>
-                </form>
-            </section>
+            <SearchForms formType={selectedForm} />
         </section>
     );
 }

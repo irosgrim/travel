@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import dubai from '../imgs/pictures/dubai.jpg';
 import star from '../imgs/icons/star.svg';
 
 function FeaturedSection() {
