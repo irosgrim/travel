@@ -333,7 +333,12 @@ strong {
     border-bottom: 10px solid var(--accent-color);
     overflow-y: hidden;
 }
-
+.image-loader {
+    position: absolute;
+    z-index: 100;
+    top: 200px;
+    left: calc(50% - 50px);
+}
 .bg {
     position: absolute;
     top: 0;
